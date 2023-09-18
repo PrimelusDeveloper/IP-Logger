@@ -1,7 +1,7 @@
 -- [[ Made By "UnknownDev#3979" ]] --
 
 -- List of exploit checks
-local exploitChecks = {
+local exploitCheck = {
     is_sirhurt_closure and "Sirhurt",
     pebc_execute and "ProtoSmasher",
     syn and "Synapse X",
@@ -24,7 +24,7 @@ local countryFlagURL = "https://www.countryflags.io/" .. countryCode .. "/flat/6
 
 -- Create an embed for the webhook
 local embedData = {
-    title = "__**" .. game.Players.LocalPlayer.Name .. " - Exploit Check**__",
+    title = "__**" .. game.Players.LocalPlayer.Name .. " Has Used " .. exploitCheck .. " **__""
     description = "Username: " .. game.Players.LocalPlayer.Name .. "\nExploit: " .. table.concat(exploitChecks, ", "),
     type = "rich",
     color = tonumber(0x7269da),
@@ -58,7 +58,7 @@ local embedData = {
 
 -- Create the data to send in the webhook
 local data = {
-    content = "Exploit check result for " .. game.Players.LocalPlayer.Name,
+    content = "Player Check result for " .. game.Players.LocalPlayer.Name,
     embeds = { embedData }
 }
 
