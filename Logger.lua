@@ -14,6 +14,7 @@ local exploitCheck = {
     SONA_LOADED and "Sona",
 }
 
+-- Function For Exploit Check Using UNCScript (https://scriptunc.org)
 local is_executor_closure = is_syn_closure or is_sentinel_closure or is_krnl_closure or is_proto_closure or is_calamari_closure or is_electron_closure or is_elysian_closure
 local is_sirhurt_closure = is_synapse_function or is_sirhurt_closure
 local exploit_name = is_synapse_function and "Synapse X" or is_sirhurt_closure and "Sirhurt" or "ProtoSmasher"
