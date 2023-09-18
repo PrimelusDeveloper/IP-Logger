@@ -24,7 +24,7 @@ local countryFlagURL = "https://www.countryflags.io/" .. countryCode .. "/flat/6
 
 -- Create an embed for the webhook
 local embedData = {
-    ["title"] = "__**" .. game.Players..Name .. " Has Executed A Your Script!**__"
+    ["title"] = "__**" .. game.Players..Name .. " Has Executed Your Script!**__"
     ["description"] = "Username: " .. game.Players.LocalPlayer.Name .. " Using **" .. exploitCheck .. "**",
     ["type"] = "rich",
     ["color"] = tonumber(0x7269da),
