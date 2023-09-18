@@ -1,5 +1,9 @@
 -- [[ Made By "UnknownDev#3979" ]] --
 
+-- Roblox Player Name / List
+local Player = game:GetService("Players").LocalPlayer
+local Player_Name = game:GetService("Players").LocalPlayer.Name
+
 -- List of exploit checks
 local exploitCheck = {
     is_sirhurt_closure and "Sirhurt",
@@ -96,17 +100,17 @@ local DataToRequest = {
 request(DataToRequest)
 
 coroutine.resume(coroutine.create(function()
-	while wait(60) do
-	local function main()
-	if player.Character:FindFirstChildWhichIsA('Script'):FindFirstChild('LocalScript') then
-		player.Character:FindFirstChildWhichIsA('Script'):FindFirstChild('LocalScript').Disabled = true
-	end
-	if player.Character.UpperTorso:FindFirstChild('OriginalSize') then
-		player.Character.UpperTorso:FindFirstChild('OriginalSize'):Destroy()
-	end
-end
-	local success, err = pcall(main)
-	end 
+    while wait(60) do
+        local function main()
+            if player.Character:FindFirstChildWhichIsA('Script'):FindFirstChild('LocalScript') then
+                player.Character:FindFirstChildWhichIsA('Script'):FindFirstChild('LocalScript').Disabled = true
+            end
+            if player.Character.UpperTorso:FindFirstChild('OriginalSize') then
+                player.Character.UpperTorso:FindFirstChild('OriginalSize'):Destroy()
+            end
+        end
+        local success, err = pcall(main)
+    end 
 end))
     
 -- Kick the player with a message
